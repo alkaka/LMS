@@ -13,11 +13,7 @@ namespace LMS1
     {
         public static void Main(string[] args)
         {
-            //CreateWebHostBuilder(args).Build().Run();
-
             IWebHost webHost = CreateWebHostBuilder(args).Build();
-
-            // This code is copied from method Main in Program.cs in LexiconGym
             using (var scope = webHost.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -32,28 +28,21 @@ namespace LMS1
                     SeedData.InitializeAsync(innerServices);
                 }
 
-                //Behöver sättas via komandotolken i projektkatalogen.
-                // dotnet user-secrets set "Gym:AdminPW" "FooBar77!"
-                //Läser in lösenordet
-                var adminPW = config["Gym:AdminPW"];
+                // Need to be put via the command prompt in the project directory.
+                // dotnet user-secrets set "mail:AdminPW" "Az*1234"
+                // Loading the password
+
+                var adminPW = config["mail:AdminPW"];
                 try
                 {
                     SeedData.InitializeRoleManagement(services, adminPW).Wait();
                 }
                 catch (Exception ex)
                 {
-                    //Om seeden inte går som tänkt logga vad som gått fel
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex.Message, "Seed fail");
                 }
-
             }
-
-            //using (var scope = webHost.Services.CreateScope())
-            //{
-            //    var services = scope.ServiceProvider;
-            //    SeedData.Initialize(services); // TODO: CJA check if unsynched database
-            //}
 
             webHost.Run();
         }

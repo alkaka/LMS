@@ -134,7 +134,7 @@ namespace LMS1.Data
                     }
                 }
 
-                var emails = new[] { "adminPW@gym.se" };
+                var emails = new[] { "adminPW@mail.se" };
 
                 foreach (var email in emails)
                 {

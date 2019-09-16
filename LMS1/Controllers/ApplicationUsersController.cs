@@ -1,7 +1,6 @@
 ﻿using LMS1.Data;
 using LMS1.Models;
 using LMS1.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
