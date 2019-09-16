@@ -12,8 +12,11 @@ Project completed within 3 Sprint (3 weeks)
 
 # Installation
 you need to run migration with Package Manager Console 
+
 PM> Enable-migrations
+
 PM> Add-migration Init
+
 PM> Update-database
 
 then with cmd commands user project folder path ex:  C:\Users\User\source\repos\LMS1\LMS1
